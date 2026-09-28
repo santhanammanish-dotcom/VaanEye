@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+gdal
+rasterio
+numpy
+opencv-python
