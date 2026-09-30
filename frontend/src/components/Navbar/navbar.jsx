@@ -1,33 +1,54 @@
 "use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import './navbar.css';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import "./navbar.css";
 
 export default function Navbar() {
   const pathname = usePathname();
 
+  const navItems = [
+    { name: "Home", href: "/" },
+    { name: "Explore", href: "/explore" },
+    { name: "Solutions", href: "/solutions" },
+    { name: "AI SatQuery", href: "/satquery" },
+    { name: "Alerts", href: "/alerts" },
+    { name: "Dashboard", href: "/dashboard" },
+  ];
+
   return (
-    <nav className="navbar">
-      <div className="navbar-brand">
-        <Link href="/">
-          <span className="logo-icon">🌍</span> VaanEye
-        </Link>
+    <header className="navbar-wrapper">
+      <div className="navbar">
+
+        {/* Logo */}
+        <div className="navbar-logo">
+          <span className="logo-globe">🌍</span>
+          <span>VaanEye</span>
+        </div>
+
+        {/* Navigation */}
+        <nav className="navbar-links">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={`navbar-link ${
+                pathname === item.href ? "active" : ""
+              }`}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Role Button */}
+        <button className="role-button">
+          <span className="role-icon">♟</span>
+          <span>Select Role</span>
+          <span className="role-arrow">⌄</span>
+        </button>
+
       </div>
-      <div className="navbar-links">
-        <Link href="/" className={pathname === '/' ? 'active' : ''}>Home</Link>
-        <Link href="/explore" className={pathname === '/explore' ? 'active' : ''}>Explore</Link>
-        <Link href="/solutions" className={pathname === '/solutions' ? 'active' : ''}>Solutions</Link>
-        <Link href="/satquery" className={pathname === '/satquery' ? 'active' : ''}>AI SatQuery</Link>
-        <Link href="/alerts" className={pathname === '/alerts' ? 'active' : ''}>Alerts</Link>
-        <Link href="/dashboard" className={pathname === '/dashboard' ? 'active' : ''}>Dashboard</Link>
-      </div>
-      <div className="navbar-profile">
-        <Link href="/roles" className="role-btn">
-          <span className="user-icon">👤</span> Select Role <span className="arrow-down">▾</span>
-        </Link>
-      </div>
-    </nav>
+    </header>
   );
 }

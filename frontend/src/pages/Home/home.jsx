@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import './home.css';
+import Footer from '../../components/Footer/footer';
 
 export default function Home() {
   return (
@@ -94,6 +95,7 @@ export default function Home() {
            </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

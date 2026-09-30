@@ -1,91 +1,189 @@
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 5%;
-  height: 75px;
-  background-color: var(--bg-light);
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-  position: sticky;
-  top: 0;
+.navbar-wrapper {
+  width: 100%;
+  position: relative;
   z-index: 1000;
+  padding: 14px 24px;
+  background: #ffffff;
 }
 
-.navbar-brand a {
+.navbar {
+  position: relative;
+  width: min(1400px, 100%);
+  height: 64px;
+  margin: 0 auto;
+
   display: flex;
   align-items: center;
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: var(--text-dark);
-  gap: 8px;
+  justify-content: space-between;
+
+  padding: 0 22px;
+
+  background: #ffffff;
+  border: 1px solid #e8edf1;
+  border-radius: 18px;
+
+  box-shadow: 0 8px 28px rgba(20, 35, 50, 0.07);
 }
 
-.logo-icon {
-  color: var(--primary-green);
-  font-size: 1.2rem;
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  font-size: 23px;
+  font-weight: 800;
+  color: #111827;
+
+  white-space: nowrap;
+  position: relative;
+  z-index: 5;
+}
+
+.logo-globe {
+  font-size: 21px;
+  line-height: 1;
 }
 
 .navbar-links {
   display: flex;
-  gap: 32px;
-  height: 100%;
-}
-
-.navbar-links a {
-  display: flex;
   align-items: center;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-dark);
+  justify-content: center;
+  gap: 34px;
+
   position: relative;
-  height: 100%;
-  transition: color 0.2s;
+  z-index: 5;
 }
 
-.navbar-links a:hover {
-  color: var(--primary-green);
+.navbar-link {
+  position: relative;
+
+  color: #20252b;
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  padding: 22px 0;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
 }
 
-.navbar-links a.active {
-  color: var(--primary-green);
+.navbar-link:hover {
+  color: #08b88a;
 }
 
-.navbar-links a.active::after {
-  content: '';
+.navbar-link.active {
+  color: #08b88a;
+}
+
+.navbar-link.active::after {
+  content: "";
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+
+  left: 50%;
+  bottom: 7px;
+
+  width: 42px;
   height: 3px;
-  background-color: var(--primary-green);
-  border-radius: 3px 3px 0 0;
+
+  transform: translateX(-50%);
+
+  background: #08b88a;
+  border-radius: 999px;
 }
 
-.navbar-profile .role-btn {
+.role-button {
+  position: relative;
+  z-index: 5;
+
   display: flex;
   align-items: center;
-  gap: 8px;
-  background-color: var(--bg-light);
-  color: var(--text-dark);
-  padding: 8px 18px;
-  border-radius: 20px;
+  gap: 9px;
+
+  padding: 10px 16px;
+
+  border: 1px solid #e6ebef;
+  border-radius: 999px;
+
+  background: #ffffff;
+  color: #262b31;
+
+  font-size: 14px;
   font-weight: 600;
-  font-size: 0.9rem;
-  border: 1px solid var(--border-color);
-  transition: all 0.2s ease;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
-.navbar-profile .role-btn:hover {
-  background-color: var(--bg-gray);
-  border-color: #dcdcdc;
+.role-button:hover {
+  border-color: #12b989;
+  box-shadow: 0 4px 14px rgba(8, 184, 138, 0.12);
+  transform: translateY(-1px);
 }
 
-.user-icon {
-  font-size: 1rem;
+.role-icon {
+  font-size: 16px;
+  color: #50408f;
 }
 
-.arrow-down {
-  font-size: 0.8rem;
-  color: var(--text-gray);
+.role-arrow {
+  font-size: 15px;
+  margin-left: 1px;
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+  .navbar-links {
+    gap: 20px;
+  }
+
+  .navbar-link {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar-links {
+    gap: 14px;
+  }
+
+  .navbar-link {
+    font-size: 13px;
+  }
+
+  .navbar-logo {
+    font-size: 20px;
+  }
+
+  .role-button {
+    padding: 9px 12px;
+  }
+}
+
+@media (max-width: 760px) {
+  .navbar-wrapper {
+    padding: 10px 12px;
+  }
+
+  .navbar {
+    height: 58px;
+    padding: 0 14px;
+    border-radius: 15px;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .role-button {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
 }
